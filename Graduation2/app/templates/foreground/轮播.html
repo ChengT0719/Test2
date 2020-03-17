@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<div class="container" >
+    <div class="page-header">
+        Welcome!
+        {% if current_user.is_authenticated %}
+            {{current_user.name}}
+        {% else %}
+            Stranger
+        {% endif %}
+    </div>
+    <div class="container">
+        <div class="carousel slide" id="slidershow" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li class="active" data-target="#slidershow" data-slide-to="0"></li>
+                <li data-target="#slidershow" data-slide-to="1"></li>
+                <li data-target="#slidershow" data-slide-to="2"></li>
+                <li data-target="#slidershow" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="{{url_for('static', filename='1.jpg')}}" alt="" style="width:100%;height:80%;display:block;"/>
+                    <div class="carousel-caption">
+                        <h4>标题一</h4>
+                        <p>如图一</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="{{url_for('static', filename='2.jpg')}}" alt="" style="width:100%;height:80%;display:block;"/>
+                    <div class="carousel-caption">
+                        <h4>标题二</h4>
+                        <p>如图二</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="{{url_for('static', filename='3.jpg')}}" alt="" style="width:100%;height:80%;display:block;"/>
+                    <div class="carousel-caption">
+                        <h4>标题三</h4>
+                        <p>如图三</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="{{url_for('static', filename='4.jpg')}}" alt="" style="width:100%;height:80%;display:block;"/>
+                    <div class="carousel-caption">
+                        <h4>标题四</h4>
+                        <p>如图四</p>
+                    </div>
+                </div>
+                <a href="#slidershow" data-slide="prev" class="left carousel-control" role="button">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a href="#slidershow" data-slide="next" class="right carousel-control" role="button">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<!--{% block page_content %}-->
+<!--<div class="page-header">-->
+<!--    Welcome!-->
+<!--    {% if current_user.is_authenticated %}-->
+<!--        {{current_user.name}}-->
+<!--    {% else %}-->
+<!--        Stranger-->
+<!--    {% endif %}-->
+<!--</div>-->
+<!--{% endblock %}-->
+
+
+

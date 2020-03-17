@@ -1,0 +1,43 @@
+{% extends "admin/admin_base.html" %}
+
+{% block content %}
+<div class="col-sm-12">
+    {% if not page_data.items %}
+    <div class="txt1" style="padding:20px;color:red">
+        暂无景区
+    </div>
+    {% else %}
+    <div class="row">
+        {% for v in page_data.items %}
+        <div class="col-sm-4">
+            <div class="thumb4">
+                <div class="thumbnail clearfix">
+                    <div class="caption">
+                        <div class="txt1">{{v.title}}</div>
+                        <div class="txt3 clearfix">
+                            <div class="left_side">
+                                <div class="nums">{{v.add_time}}</div>
+                            </div>
+                            <div class="right_side"><a href=""></a></div>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="{{url_for('admin.travels_edit', id=v.id)}}"><input type="button" value="编辑"></a>
+                        <a href="{{url_for('admin.travels_del', id=v.id)}}"><input type="button" value="删除" id="b1"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+{% block scripts %}
+{{super()}}
+    <script>
+        if($(".b1").comfirm("确定要删除吗？")){
+
+        }
+    </script>
+{% endblock %}

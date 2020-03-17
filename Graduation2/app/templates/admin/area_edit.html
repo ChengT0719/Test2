@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+后台管理-地区管理
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for msg in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{msg|safe}}
+    </div>
+    {% endfor %}
+
+{% block page_content %}
+<div class="col-md-4">
+    {{wtf.quick_form(form)}}
+</div>
+{% endblock %}
+</div>
+{% endblock %}
+
+{% block script %}
+{{super()}}
+    <script src="{{url_for('static', filename='ckeditor/ckeditor.js')}}"></script>
+    <script>
+        // 使用CKeditor编辑器
+        CKEDITOR.replace('content', {
+            filebrowserUploadUrl:'/admin/ckupload',
+        });
+    </script>
+{% endblock %}

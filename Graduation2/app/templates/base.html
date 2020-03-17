@@ -1,0 +1,58 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Graduation{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='图标.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='图标.ico') }}" type="image/x-icon">
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle"
+                    data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{url_for('foreground.index')}}">Graduation</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{url_for('foreground.index')}}">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><span><a href="{{url_for('foreground.collect_list')}}">我的收藏</a></span>
+                <li><span><a href="{{url_for('foreground.suggestion')}}">意见建议</a></span>
+                {% if current_user.is_authenticated %}
+                    <span><a href="{{url_for('auth.logout')}}">退出</a></span></li>
+                {% else %}
+                <span><span><a href="{{url_for('auth.login')}}">登录</a></span>|<span><a href="{{url_for('auth.register')}}">注册</a></span></span></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for msg in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{msg|safe}}
+    </div>
+    {% endfor %}
+    {% block page_content %} {% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}
+

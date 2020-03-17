@@ -1,0 +1,34 @@
+{% extends "admin/admin_base.html" %}
+
+{% block content %}
+<div class="col-sm-12">
+    {% if not page_data.items %}
+    <div class="txt1" style="padding:20px;color:red">
+        暂无日志
+    </div>
+    {% else %}
+    <div class="row">
+        {% for v in page_data.items %}
+        <div class="col-sm-4">
+            <div class="thumb4">
+                <div class="thumbnail clearfix">
+                    <div class="caption">
+                        <div class="txt1">{{v.id}}</div>
+                        <div class="txt1">{{v.admin.account}}</div>
+                        <div class="txt1">{{v.reason}}</div>
+                        <div class="txt1">{{v.admin_ip}}</div>
+                        <div class="txt3 clearfix">
+                            <div class="left_side">
+                                <div class="nums">{{v.add_time}}</div>
+                            </div>
+                            <div class="right_side"><a href=""></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

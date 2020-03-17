@@ -1,0 +1,21 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+后台管理-景区管理
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for msg in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{msg|safe}}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block script %}
+{{super()}}
+{% endblock %}

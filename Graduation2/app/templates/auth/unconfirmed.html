@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %} Unconfirmed {% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>您的账户还未完成确认</h1>
+    <p>在访问此网站之前，您需要确认您的帐户。</p>
+    <p>检查你的收件箱，你应该已经收到一封带有确认链接的电子邮件。</p>
+    <p>如果需要重新发送，请点击<a href="{{url_for('auth.resend_mail')}}">发送</a></p>
+</div>
+{% endblock %}
